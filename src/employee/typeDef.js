@@ -2,7 +2,7 @@ export default `
 
     scalar DateTime
 
-    type Waiter {
+    type Employee {
         id: ID!,
         firstName: String!,
         lastName: String!,
@@ -17,12 +17,12 @@ export default `
     }
 
     type Query {
-        waiters: [Waiter!]!,
-        waiter(id: ID!): Waiter 
+        employees: [Employee!]!,
+        employee(id: ID!): Employee 
     }
 
     type Mutation {
-        createWaiter(
+        createEmployee(
             firstName: String!,
             lastName: String!,
             user: String!,
@@ -31,6 +31,6 @@ export default `
             address: String!,
             phone: String!,
             email: String!,
-        ): Waiter!
+        ): Employee!
     }
 `;

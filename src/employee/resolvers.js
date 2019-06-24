@@ -4,18 +4,18 @@ export default {
   DateTime: GraphQLDateTime,
   
   Query: {
-    waiters: (parent, args, { db }, info) => db.models.waiter.findAll(),
-    waiter: (parent, { id }, { db }, info) => db.models.waiter.findByPk(id)
+    employees: (parent, args, { db }, info) => db.models.employee.findAll(),
+    employee: (parent, { id }, { db }, info) => db.models.employee.findByPk(id)
   },
 
   Mutation: {
-    createWaiter: (
+    createEmployee: (
       parent,
       { firstName, lastName, user, password, dni, address, phone, email },
       { db },
       info
     ) =>
-      db.models.waiter.create({
+      db.models.employee.create({
         firstName: firstName,
         lastName: lastName,
         user: user,

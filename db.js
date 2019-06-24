@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
-import waiterModel from "./models/waiter";
-import scheduleModel from "./models/schedule";
+import employeeModel from "./src/employee/Employee";
+import scheduleModel from "./src/schedule/Schedule";
 
 require("dotenv").config();
 
@@ -19,10 +19,10 @@ const db = new Sequelize(
 );
 
 // Modeling the tables
-const Waiter = db.define("waiter", waiterModel);
+const Employee = db.define("employee", employeeModel);
 const Schedule = db.define("schedule", scheduleModel);
 
 // Associations
-Waiter.hasMany(Schedule);
+Employee.hasMany(Schedule);
 
 export default db;
