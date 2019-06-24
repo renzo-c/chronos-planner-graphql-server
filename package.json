@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
+    "watch:lint": "node node_modules/eslint-watch/bin/esw -w --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +19,12 @@
   },
   "homepage": "https://github.com/renzo-c/chronos-planner-graphql-server#readme",
   "dependencies": {
+    "apollo-server": "^2.6.4",
+    "apollo-server-express": "^2.6.4",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "graphql": "^14.3.1",
+    "graphql-iso-date": "^3.6.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.8.11"
@@ -28,6 +33,9 @@
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "eslint": "^6.0.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-watch": "^5.1.2",
     "nodemon": "^1.19.1"
   }
 }
