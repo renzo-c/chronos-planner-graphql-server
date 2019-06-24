@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-const waiterModel = {
+const employeeModel = {
     id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -102,4 +102,4 @@ const waiterModel = {
     }
 }
 
-export default waiterModel;
+export default employeeModel;
