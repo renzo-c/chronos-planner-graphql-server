@@ -1,9 +1,11 @@
 import Sequelize from "sequelize";
 import waiterModel from "./models/waiter";
+import scheduleModel from "./models/schedule";
 
 require("dotenv").config();
 
-const sequelize = new Sequelize(
+// Setting up connection
+const db = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
@@ -16,28 +18,11 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been stablished successfully.");
-  })
-  .catch(err => {
-    console.log("Unable to connect to the database:", err);
-  });
+// Modeling the tables
+const Waiter = db.define("waiter", waiterModel);
+const Schedule = db.define("schedule", scheduleModel);
 
-const Waiter = sequelize.define('waiter', waiterModel);
+// Associations
+Waiter.hasMany(Schedule);
 
-sequelize.sync({force: true}).then(() => {
-    return Waiter.create({
-        firstName: 'John',
-        lastName: 'Arsenevich',
-        user: 'jarsenevich',
-        password: 'joe12345',
-        dni: 56821450,
-        address: 'Denver St. 123',
-        phone: 980043456,
-        email: 'jarsenevich@gmail.com'
-    });
-});
-
-export default sequelize;
+export default db;

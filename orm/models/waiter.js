@@ -97,7 +97,7 @@ const waiterModel = {
     updatedAt: {
         type: Sequelize.DATE,
     },
-    createdAt: {
+    deletedAt: {
         type: Sequelize.DATE,
     }
 }
