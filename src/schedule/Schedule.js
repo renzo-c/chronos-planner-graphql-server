@@ -10,15 +10,57 @@ const scheduleModel = {
     type: Sequelize.STRING,
     allowNull: true,
     validate: {
-      isAlphanumeric: {
-        args: true,
-        msg: "Tag must contain only letters or numbers"
+      is: {
+        args: /[\w-]/,
+        msg: "Tag must contain only letters, numbers, dashes or spaces"
       },
       len: {
-        args: [4, 10],
-        msg: "Tag must contain more than 4 and less than 10 characters"
+        args: [4, 15],
+        msg: "Tag must contain more than 4 and less than 15 characters"
+      },
+    }
+  },
+  start: {
+    type: Sequelize.DATE,
+    allowNull: true,        //change when tests were done
+    validate: {
+      isDate: {
+        args: true,
+        msg: "Field must be filled with a date value"
+      },
+      isAfter: {
+        args: `${new Date()}`,
+        msg: `Start must be a future date | ${new Date()}`
       }
     }
+  },
+  end: {
+    type: Sequelize.DATE,
+    allowNull: true,
+    validate: {
+      isDate: {
+        args: true,
+        msg: "Field must be filled with a date value"
+      },
+      isAfter: {
+        args: `${new Date()}`,
+        msg: `Start must be a future date | ${new Date()}`
+      }
+    }
+  },
+  active: {
+    type: Sequelize.STRING,
+    defaultValue: 'disabled',
+    allowNull: false,
+    validate: {
+      is: {
+        args: /^disabled|enabled$/,
+        msg: "Field only accepts wheather 'enabled or 'disabled' words"
+      }
+    }
+  },
+  deletedAt: {
+    type: Sequelize.DATE
   }
 };
 
