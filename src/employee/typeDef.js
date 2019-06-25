@@ -1,6 +1,6 @@
-export default `
+import { gql } from "apollo-server";
 
-    scalar DateTime
+const employee = gql`
 
     type Employee {
         id: ID!,
@@ -16,12 +16,12 @@ export default `
         deletedAt: DateTime
     }
 
-    type Query {
+    extend type Query {
         employees: [Employee!]!,
         employee(id: ID!): Employee
     }
 
-    type Mutation {
+    extend type Mutation {
         createEmployee(
             firstName: String!,
             lastName: String!,
@@ -46,3 +46,5 @@ export default `
         deleteEmployee( id: ID! ): Employee
     }
 `;
+
+export default employee;
