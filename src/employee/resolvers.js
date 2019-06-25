@@ -1,7 +1,7 @@
 import { GraphQLDateTime } from "graphql-iso-date";
 
 export default {
-  DateTime: GraphQLDateTime,
+  // DateTime: GraphQLDateTime, //pending point to check if it is used
 
   Query: {
     employees: (parent, args, { db }, info) => db.models.employee.findAll(),
