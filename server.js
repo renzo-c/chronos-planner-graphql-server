@@ -1,10 +1,10 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server";
 import db from './db';
-import typeDefs from './src/employee/typeDef';
-import resolvers from './src/employee/resolvers';
+import { typeDefs, resolvers } from './graphql';
+
 
 const server = new ApolloServer({
-  typeDefs: gql(typeDefs),
+  typeDefs,
   resolvers,
   context: { db }
 });
