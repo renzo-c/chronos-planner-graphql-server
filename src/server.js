@@ -8,7 +8,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: { db },
-  playground: true
+  playground: true,
+  introspection: true
 });
 
 // Synchronizing the models with the database
