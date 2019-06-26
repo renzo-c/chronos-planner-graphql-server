@@ -4,11 +4,11 @@
   "description": "This is the server for chronos planner app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node server.js",
+    "dev": "node ./build/index.js && nodemon --exec babel-node server.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel src --out-dir build",
     "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/server.js"
+    "start": "node ./build/server.js"
   },
   "repository": {
     "type": "git",
