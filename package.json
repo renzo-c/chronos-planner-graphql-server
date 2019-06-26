@@ -4,8 +4,11 @@
   "description": "This is the server for chronos planner app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec babel-node server.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel src --out-dir build",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
     "sequelize": "^5.8.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

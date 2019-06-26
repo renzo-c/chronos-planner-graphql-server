@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
-import employeeModel from "./src/employee/Employee";
-import scheduleModel from "./src/schedule/Schedule";
+import employeeModel from "./employee/Employee";
+import scheduleModel from "./schedule/Schedule";
 
 require("dotenv").config();
 
