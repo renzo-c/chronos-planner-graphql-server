@@ -48,7 +48,7 @@ const scheduleModel = {
       }
     }
   },
-  active: {
+  status: {
     type: Sequelize.STRING,
     defaultValue: 'disabled',
     allowNull: false,
