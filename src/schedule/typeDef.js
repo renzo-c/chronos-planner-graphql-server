@@ -7,7 +7,7 @@ const schedule = gql`
     tagName: String
     start: DateTime
     end: DateTime
-    active: String
+    status: String
     deletedAt: DateTime
   }
 
@@ -21,14 +21,14 @@ const schedule = gql`
       tagName: String
       start: DateTime
       end: DateTime
-      active: String
+      status: String
     ): Schedule!
     updateSchedule(
       id: ID!
       tagName: String
       start: DateTime
       end: DateTime
-      active: String
+      status: String
     ): Schedule!
     deleteSchedule( id: ID! ): Schedule
   }
