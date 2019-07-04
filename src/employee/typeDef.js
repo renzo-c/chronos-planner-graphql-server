@@ -12,7 +12,7 @@ const employee = gql`
         address: String!,
         phone: String!,
         email: String!,
-        status: String!
+        status: String
         createdAt: DateTime!,
         deletedAt: DateTime
     }
@@ -32,7 +32,7 @@ const employee = gql`
             address: String!,
             phone: String!,
             email: String!,
-            status: String!
+            status: String
         ): Employee!
         updateEmployee(
             id: ID!,

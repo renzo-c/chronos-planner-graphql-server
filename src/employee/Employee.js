@@ -96,7 +96,7 @@ const employeeModel = {
   },
   status: {
     type: Sequelize.STRING,
-    defaultValue: "disabled",
+    defaultValue: 'disabled',
     allowNull: false,
     validate: {
       is: {
