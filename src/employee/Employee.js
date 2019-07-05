@@ -4,7 +4,6 @@ const employeeModel = {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
-    primaryKey: true
   },
   firstName: {
     type: Sequelize.STRING,
@@ -16,7 +15,7 @@ const employeeModel = {
       },
       len: {
         args: [4, 20],
-        msg: "Firstname must contain more than 8 and less than 20 characters"
+        msg: "must contain at least 4 characters and not more than 20"
       }
     }
   },
@@ -26,11 +25,11 @@ const employeeModel = {
     validate: {
       isAlpha: {
         args: true,
-        msg: "Lastname must contain characters from a to z only"
+        msg: "Lastname must contain only alphabetic characters"
       },
       len: {
         args: [4, 20],
-        msg: "Lastname must contain more than 8 and less than 20 characters"
+        msg: "Lastname must contain at least 4 characters and not more than 20"
       }
     }
   },
@@ -42,7 +41,8 @@ const employeeModel = {
         args: true,
         msg: "User must contain characters and numbers only"
       }
-    }
+    },
+    primaryKey: true
   },
   password: {
     type: Sequelize.STRING,
@@ -60,7 +60,7 @@ const employeeModel = {
     validate: {
       is: {
         args: /[0-9]{8}/,
-        msg: "DNI must contain 8 numbers only"
+        msg: "DNI must contain 8 digits only"
       }
     }
   },
@@ -70,7 +70,7 @@ const employeeModel = {
     validate: {
       len: {
         args: [8, 20],
-        msg: "Address must contain no more than 20  characters"
+        msg: "Address must contain at least 8 characters and not more than 20"
       }
     }
   },
@@ -80,7 +80,7 @@ const employeeModel = {
     validate: {
       len: {
         is: /[0-9]{9}/,
-        msg: "Phone must contain 9 numbers only"
+        msg: "Phone must contain 9 digits only"
       }
     }
   },
