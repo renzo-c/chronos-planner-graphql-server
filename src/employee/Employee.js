@@ -55,7 +55,7 @@ const employeeModel = {
     }
   },
   dni: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       is: {
