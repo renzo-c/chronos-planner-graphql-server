@@ -15,6 +15,6 @@ const server = new ApolloServer({
 // Synchronizing the models with the database
 db.sync({force: true}).then(() => {});
 
-server.listen({ port: process.env.PORT || 3000 }).then(({ url }) => {
+server.listen({ port: process.env.PORT || 4005 }).then(({ url }) => {
     console.log(`🚀 Server ready at ${url}`)
   });

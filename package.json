@@ -8,7 +8,8 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel src --out-dir build",
     "build": "npm run clean && npm run build-babel",
-    "start": "node ./build/server.js"
+    "start": "node ./build/server.js",
+    "test": "nodemon --exec babel-node src/server.js"
   },
   "repository": {
     "type": "git",
