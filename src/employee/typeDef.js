@@ -3,7 +3,7 @@ import { gql } from "apollo-server";
 const employee = gql`
 
     type Employee {
-        id: ID!,
+        id: ID,
         firstName: String!,
         lastName: String!,
         user: String!,
