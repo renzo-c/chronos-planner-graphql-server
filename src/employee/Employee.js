@@ -4,8 +4,6 @@ const employeeModel = {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
-    primaryKey: true
-
   },
   firstName: {
     type: Sequelize.STRING,
@@ -44,6 +42,7 @@ const employeeModel = {
         msg: "User must contain characters and numbers only"
       }
     },
+    primaryKey: true
   },
   password: {
     type: Sequelize.STRING,
