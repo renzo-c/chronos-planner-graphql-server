@@ -14,7 +14,7 @@ export default {
     updateEmployee: (parent, args, { db }, info) => {
       return db.models.employee
         .update(args, {
-          where: { id: args.id },
+          where: { user: args.user },
           returning: true,
           plain: true
         })
