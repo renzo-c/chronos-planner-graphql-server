@@ -21,8 +21,8 @@ export default {
         .then(test => test[1].dataValues);
     },
     deleteEmployee: (parent, args, { db }, info) => {
-      return db.models.employee.findByPk(args.id).then(employee => {
-        db.models.employee.destroy({ where: { id: args.id } });
+      return db.models.employee.findOne({where: {user: args.user}}).then(employee => {
+        db.models.employee.destroy({ where: { user: args.user } });
         return employee;
       });
     }
