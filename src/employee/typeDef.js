@@ -35,7 +35,6 @@ const employee = gql`
             status: String
         ): Employee!
         updateEmployee(
-            id: ID,
             firstName: String,
             lastName: String,
             user: String!,
