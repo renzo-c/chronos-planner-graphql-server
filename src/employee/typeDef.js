@@ -35,10 +35,9 @@ const employee = gql`
             status: String
         ): Employee!
         updateEmployee(
-            id: ID!,
             firstName: String,
             lastName: String,
-            user: String,
+            user: String!,
             password: String,
             dni: String,
             address: String,
@@ -46,7 +45,7 @@ const employee = gql`
             email: String,
             status: String
         ): Employee!
-        deleteEmployee( id: ID! ): Employee
+        deleteEmployee( user: String! ): Employee
     }
 `;
 
