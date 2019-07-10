@@ -30,6 +30,7 @@ const schedule = gql`
       tagName: String
       start: DateTime
       end: DateTime
+      employeeUser: String
       status: String
     ): Schedule!
     deleteSchedule( id: ID! ): Schedule
