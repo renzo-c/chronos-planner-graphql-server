@@ -15,8 +15,9 @@ export default {
   },
 
   Mutation: {
-    createSchedule: (parent, args, { db }, info) =>
-      db.models.schedule.create(args),
+    createSchedule: (parent, args, { db }, info) => {
+      return db.models.schedule.create(args);
+    },
     updateSchedule: (parent, args, { db }, info) =>
       db.models.schedule
         .update(args, {
