@@ -3,7 +3,7 @@ import { gql } from "apollo-server";
 const schedule = gql`
   
   type Schedule {
-    id: ID
+    id: ID!
     tagName: String!
     start: DateTime!
     end: DateTime!

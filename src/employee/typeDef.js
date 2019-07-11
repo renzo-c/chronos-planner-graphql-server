@@ -4,16 +4,16 @@ const employee = gql`
 
     type Employee {
         id: ID,
-        firstName: String,
-        lastName: String,
-        user: String,
-        password: String,
-        dni: String,
-        address: String,
-        phone: String,
-        email: String,
+        firstName: String!,
+        lastName: String!,
+        user: String!,
+        password: String!,
+        dni: String!,
+        address: String!,
+        phone: String!,
+        email: String!,
         status: String
-        createdAt: DateTime,
+        createdAt: DateTime!,
         deletedAt: DateTime
     }
 
