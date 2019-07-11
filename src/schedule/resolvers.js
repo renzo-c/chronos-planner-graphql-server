@@ -4,7 +4,7 @@ export default {
   // DateTime: GraphQLDateTime, //pending point to check if it is used
   Schedule: {
     employee: (parent, args, { db }, info) => {
-      return parent.getEmployee();
+      return parent.getEmployees();
     }
   },
   Query: {
@@ -14,7 +14,7 @@ export default {
     schedule: (parent, { id }, { db }, info) => {
       const test = db.models.schedule
         .findByPk(id)
-      .then(result => console.log("result", Object.keys(result.__proto__)));
+        .then(result => console.log("result", Object.keys(result.__proto__)));
       // .then(result => console.log("result", result));
       return db.models.schedule.findByPk(id);
     }
@@ -22,7 +22,7 @@ export default {
 
   Mutation: {
     createSchedule: (parent, args, { db }, info) => {
-      return db.models.schedule.create(args);
+      return db.models.schedule.create(args)
     },
     updateSchedule: (parent, args, { db }, info) =>
       db.models.schedule

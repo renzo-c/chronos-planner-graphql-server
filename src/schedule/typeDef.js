@@ -7,7 +7,7 @@ const schedule = gql`
     tagName: String!
     start: DateTime!
     end: DateTime!
-    status: String
+    status: String!
     employee: Employee
     deletedAt: DateTime
   }

@@ -26,5 +26,6 @@ const AttendanceControl = db.define("attendanceControl", attendanceControl)
 
 // Associations
 Employee.belongsToMany(Schedule, {through: AttendanceControl});
+Schedule.belongsToMany(Employee, {through: AttendanceControl});
 
 export default db;
