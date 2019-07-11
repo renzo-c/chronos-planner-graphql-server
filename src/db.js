@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 import employeeModel from "./employee/Employee";
 import scheduleModel from "./schedule/Schedule";
+import attendanceControl from './attendance/Attendance';
 
 require("dotenv").config();
 
@@ -21,8 +22,9 @@ const db = new Sequelize(
 // Modeling the tables
 const Employee = db.define("employee", employeeModel);
 const Schedule = db.define("schedule", scheduleModel);
+const AttendanceControl = db.define("attendanceControl", attendanceControl)
 
 // Associations
-Employee.hasMany(Schedule);
+Employee.belongsToMany(Schedule, {through: AttendanceControl});
 
 export default db;
