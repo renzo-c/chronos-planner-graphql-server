@@ -6,21 +6,22 @@ export default {
   },
   Query: {
     schedules: (parent, args, { db }, info) => {
-      return db.models.schedule.findAll();
+      return db.models.schedule
+        .findAll({
+          include: [
+            {
+              model: db.models.employee
+            }
+          ]
+        })
+        .then(result => result);
     },
     schedule: (parent, { id }, { db }, info) => {
       // db.models.schedule
       //   .findByPk(id)
       //   .then(result => console.log("result", Object.keys(result.__proto__)));
       return db.models.schedule.findByPk(id);
-    },
-    employeesBySchedules: (parent, args, { db }, info) => {
-      return db.models.schedule.findAll({
-        include: [{
-          model: db.models.employee
-        }]
-      }).then(result => result);
-    },
+    }
   },
 
   Mutation: {
