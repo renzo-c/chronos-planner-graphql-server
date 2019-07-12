@@ -1,6 +1,6 @@
 export default {
   Schedule: {
-    employee: (parent, args, { db }, info) => {
+    employees: (parent, args, { db }, info) => {
       return parent.getEmployees();
     }
   },
