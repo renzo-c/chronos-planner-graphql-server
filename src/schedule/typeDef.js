@@ -36,6 +36,10 @@ const schedule = gql`
       scheduleId: ID!
       employeeUser: String!
     ) : Schedule!
+    removeEmployeeToSchedule(
+      scheduleId: ID!
+      employeeUser: String!
+    ) : Schedule!
   }
 `;
 

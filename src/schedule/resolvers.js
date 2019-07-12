@@ -50,6 +50,25 @@ export default {
             where: { id: scheduleId }
           });
         });
+    },
+    removeEmployeeToSchedule: (
+      parent,
+      { scheduleId, employeeUser },
+      { db },
+      info
+    ) => {
+      return db.models.schedule
+        .findOne({
+          where: { id: scheduleId },
+          include: { model: db.models.employee }
+        })
+        // .then(result => console.log("result", Object.keys(result.__proto__)));
+      .then(result => result.removeEmployee(employeeUser))
+      .then(() => {
+        return db.models.schedule.findOne({
+          where: { id: scheduleId }
+        });
+      });
     }
   }
 };
