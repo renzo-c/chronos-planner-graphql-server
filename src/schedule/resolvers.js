@@ -47,6 +47,7 @@ export default {
       { db },
       info
     ) => {
+      db.models.attendance.destroy({ where: { scheduleId } });
       return db.models.schedule
         .findOne({
           where: { id: scheduleId },
