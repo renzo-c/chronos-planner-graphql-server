@@ -14,7 +14,8 @@ const schedule = gql`
 
   extend type Query {
     schedules: [Schedule!]!
-    schedule(id: ID!): Schedule 
+    schedule(id: ID!): Schedule
+    employeesBySchedules: [Schedule]
   }
 
   extend type Mutation {
