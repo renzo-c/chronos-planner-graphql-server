@@ -30,7 +30,8 @@ export const resolvers = {
   Mutation: Object.assign(
     {},
     employeeResolvers.Mutation,
-    scheduleResolvers.Mutation
+    scheduleResolvers.Mutation,
+    attendanceResolvers.Mutation
   ),
   Schedule: Object.assign({}, scheduleResolvers.Schedule),
   Attendance: Object.assign({}, attendanceResolvers.Attendance),

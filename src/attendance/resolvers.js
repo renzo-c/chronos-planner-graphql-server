@@ -16,5 +16,17 @@ export default {
         where: { employeeUser, scheduleId }
       });
     }
+  },
+  Mutation: {
+    deleteAttendance: (parent, { employeeUser, scheduleId }, { db }, info) => {
+      return db.models.attendance
+        .findOne({
+          where: { employeeUser, scheduleId }
+        })
+        .then(attendance => {
+          attendance.destroy();
+          return attendance;
+        });
+    }
   }
 };

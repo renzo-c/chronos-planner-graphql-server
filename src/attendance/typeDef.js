@@ -13,10 +13,11 @@ const attendance = gql`
 
   extend type Query {
     attendances: [Attendance]!
-    attendance(
-      scheduleId: ID!
-      employeeUser: String!
-    ): Attendance!
+    attendance(scheduleId: ID!, employeeUser: String!): Attendance!
+  }
+
+  extend type Mutation {
+    deleteAttendance(scheduleId: ID!, employeeUser: String!): Attendance!
   }
 `;
 
