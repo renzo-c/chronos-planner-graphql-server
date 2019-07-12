@@ -46,8 +46,8 @@ export default {
         })
         .then(result => result.addEmployee(employeeUser))
         .then(() => {
-          return db.models.schedule.findOne({
-            where: { id: scheduleId }
+          return db.models.attendance.findOne({
+            where: { scheduleId, employeeUser }
           });
         });
     },
@@ -57,18 +57,20 @@ export default {
       { db },
       info
     ) => {
-      return db.models.schedule
-        .findOne({
-          where: { id: scheduleId },
-          include: { model: db.models.employee }
-        })
-        // .then(result => console.log("result", Object.keys(result.__proto__)));
-      .then(result => result.removeEmployee(employeeUser))
-      .then(() => {
-        return db.models.schedule.findOne({
-          where: { id: scheduleId }
-        });
-      });
+      return (
+        db.models.schedule
+          .findOne({
+            where: { id: scheduleId },
+            include: { model: db.models.employee }
+          })
+          // .then(result => console.log("result", Object.keys(result.__proto__)));
+          .then(result => result.removeEmployee(employeeUser))
+          .then(() => {
+            return db.models.schedule.findOne({
+              where: { id: scheduleId }
+            });
+          })
+      );
     }
   }
 };
