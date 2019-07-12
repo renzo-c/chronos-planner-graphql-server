@@ -9,9 +9,9 @@ export default {
       return db.models.schedule.findAll();
     },
     schedule: (parent, { id }, { db }, info) => {
-      db.models.schedule
-        .findByPk(id)
-        .then(result => console.log("result", Object.keys(result.__proto__)));
+      // db.models.schedule
+      //   .findByPk(id)
+      //   .then(result => console.log("result", Object.keys(result.__proto__)));
       return db.models.schedule.findByPk(id);
     }
   },

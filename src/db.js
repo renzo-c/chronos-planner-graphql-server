@@ -22,10 +22,10 @@ const db = new Sequelize(
 // Modeling the tables
 const Employee = db.define("employee", employeeModel);
 const Schedule = db.define("schedule", scheduleModel);
-const AttendanceControl = db.define("attendanceControl", attendanceControlModel)
+const Attendance = db.define("attendance", attendanceControlModel)
 
 // Associations
-Employee.belongsToMany(Schedule, {through: AttendanceControl});
-Schedule.belongsToMany(Employee, {through: AttendanceControl});
+Employee.belongsToMany(Schedule, {through: Attendance});
+Schedule.belongsToMany(Employee, {through: Attendance});
 
 export default db;
