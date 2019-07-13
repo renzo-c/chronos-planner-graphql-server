@@ -35,7 +35,7 @@ const schedule = gql`
     addEmployeeToSchedule(
       scheduleId: ID!
       employeeUser: String!
-    ) : Attendance
+    ) : Schedule
     removeEmployeeToSchedule(
       scheduleId: ID!
       employeeUser: String!

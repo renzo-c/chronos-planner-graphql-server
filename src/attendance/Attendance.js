@@ -7,16 +7,21 @@ const attendanceModel = {
     primaryKey: true
   },
   photo: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   latitude: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.FLOAT
   },
   longitude: {
     type: Sequelize.FLOAT
   },
   start: {
     type: Sequelize.DATE
+  },
+  status: {
+    type: Sequelize.STRING,
+    defaultValue: "disabled",
+    allowNull: false
   }
 };
 

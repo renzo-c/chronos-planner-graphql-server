@@ -55,8 +55,8 @@ export default {
         })
         .then(result => result.addEmployee(employeeUser))
         .then(() => {
-          return db.models.attendance.findOne({
-            where: { scheduleId, employeeUser }
+          return db.models.schedule.findOne({
+            where: { id: scheduleId }
           });
         });
     },
