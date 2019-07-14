@@ -4,8 +4,15 @@ export default {
   // DateTime: GraphQLDateTime, //pending point to check if it is used
 
   Query: {
-    employees: (parent, args, { db }, info) => db.models.employee.findAll(),
-    employee: (parent, { id }, { db }, info) => db.models.employee.findByPk(id)
+    employees: (parent, args, { db }, info) => {
+      return db.models.employee.findAll()
+    },
+    employee: (parent, { id }, { db }, info) => {
+      const test = db.models.employee
+        .findByPk(id)
+        .then(result => console.log("result", Object.keys(result.__proto__)));
+      return db.models.employee.findByPk(id)
+    }
   },
 
   Mutation: {

@@ -3,18 +3,18 @@ import { gql } from "apollo-server";
 const schedule = gql`
   
   type Schedule {
-    id: ID
+    id: ID!
     tagName: String!
     start: DateTime!
     end: DateTime!
-    status: String
-    employee: Employee
+    status: String!
+    employees: [Employee]
     deletedAt: DateTime
   }
 
   extend type Query {
     schedules: [Schedule!]!
-    schedule(id: ID!): Schedule 
+    schedule(id: ID!): Schedule
   }
 
   extend type Mutation {
@@ -22,7 +22,6 @@ const schedule = gql`
       tagName: String
       start: DateTime
       end: DateTime
-      employeeUser: String
       status: String
     ): Schedule!
     updateSchedule(
@@ -30,10 +29,17 @@ const schedule = gql`
       tagName: String
       start: DateTime
       end: DateTime
-      employeeUser: String
       status: String
     ): Schedule!
     deleteSchedule( id: ID! ): Schedule
+    addEmployeeToSchedule(
+      scheduleId: ID!
+      employeeUser: String!
+    ) : Schedule
+    removeEmployeeToSchedule(
+      scheduleId: ID!
+      employeeUser: String!
+    ) : Schedule!
   }
 `;
 
