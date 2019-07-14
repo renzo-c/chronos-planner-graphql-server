@@ -59,6 +59,11 @@ export default {
             where: { id: scheduleId }
           });
         });
+      // .then(() => {
+      //   return db.models.attendance.findAll({
+      //     where: { scheduleId, employeeUser }
+      //   });
+      // });
     },
     removeEmployeeToSchedule: (
       parent,

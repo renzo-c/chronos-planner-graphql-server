@@ -9,6 +9,7 @@ const attendance = gql`
     start: DateTime
     employee: Employee
     schedule: Schedule
+    status: String
   }
 
   extend type Query {
