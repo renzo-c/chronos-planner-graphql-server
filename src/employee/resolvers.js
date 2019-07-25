@@ -10,7 +10,7 @@ export default {
     employee: (parent, { id }, { db }, info) => {
       const test = db.models.employee
         .findByPk(id)
-        .then(result => console.log("result", Object.keys(result.__proto__)));
+        // .then(result => console.log("result", Object.keys(result.__proto__)));
       return db.models.employee.findByPk(id)
     }
   },
