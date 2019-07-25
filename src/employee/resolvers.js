@@ -5,13 +5,13 @@ export default {
 
   Query: {
     employees: (parent, args, { db }, info) => {
-      return db.models.employee.findAll()
+      return db.models.employee.findAll();
     },
-    employee: (parent, { id }, { db }, info) => {
-      const test = db.models.employee
-        .findByPk(id)
-        // .then(result => console.log("result", Object.keys(result.__proto__)));
-      return db.models.employee.findByPk(id)
+    employee: (parent, { user }, { db }, info) => {
+      // const test = db.models.employee
+      //   .findByPk(user)
+      // .then(result => console.log("result", Object.keys(result.__proto__)));
+      return db.models.employee.findByPk(user);
     }
   },
 
@@ -28,10 +28,12 @@ export default {
         .then(test => test[1].dataValues);
     },
     deleteEmployee: (parent, args, { db }, info) => {
-      return db.models.employee.findOne({where: {user: args.user}}).then(employee => {
-        db.models.employee.destroy({ where: { user: args.user } });
-        return employee;
-      });
+      return db.models.employee
+        .findOne({ where: { user: args.user } })
+        .then(employee => {
+          db.models.employee.destroy({ where: { user: args.user } });
+          return employee;
+        });
     }
   }
 };
