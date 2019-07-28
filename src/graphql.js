@@ -35,4 +35,5 @@ export const resolvers = {
   ),
   Schedule: Object.assign({}, scheduleResolvers.Schedule),
   Attendance: Object.assign({}, attendanceResolvers.Attendance),
+  Employee: Object.assign({}, employeeResolvers.Employee)
 };

@@ -13,13 +13,15 @@ const employee = gql`
         phone: String!,
         email: String!,
         status: String
+        schedules: [Schedule],
         createdAt: DateTime!,
         deletedAt: DateTime
     }
 
     extend type Query {
         employees: [Employee!]!,
-        employee(user: String!): Employee
+        employee(user: String!): Employee,
+        employeeLogin(user: String, password: String): Employee
     }
 
     extend type Mutation {

@@ -2,7 +2,11 @@
 
 export default {
   // DateTime: GraphQLDateTime, //pending point to check if it is used
-
+  Employee: {
+    schedules: (parent, args, { db }, info) => {
+      return parent.getSchedules();
+    }
+  },
   Query: {
     employees: (parent, args, { db }, info) => {
       return db.models.employee.findAll();
@@ -10,8 +14,16 @@ export default {
     employee: (parent, { user }, { db }, info) => {
       // const test = db.models.employee
       //   .findByPk(user)
-      // .then(result => console.log("result", Object.keys(result.__proto__)));
+      //   .then(result => console.log("result", Object.keys(result.__proto__)));
       return db.models.employee.findByPk(user);
+    },
+    employeeLogin: (parent, { user, password }, { db }, info) => {
+      return db.models.employee.findOne({
+        where: {
+          user,
+          password
+        }
+      });
     }
   },
 
