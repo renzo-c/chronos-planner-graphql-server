@@ -27,6 +27,17 @@ export default {
           attendance.destroy();
           return attendance;
         });
+    },
+    startAttendance: (parent, args, { db }, info) => {
+      console.log("args!!!", args)
+      const { employeeUser, scheduleId } = args;
+      return db.models.attendance
+        .update(args, {
+          where: { employeeUser, scheduleId },
+          returning: true,
+          plain: true
+        })
+        .then(result => result[1].dataValues);
     }
   }
 };

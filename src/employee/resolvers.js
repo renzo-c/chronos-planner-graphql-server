@@ -24,6 +24,13 @@ export default {
           password
         }
       });
+    },
+    employeeSchedules: (parent, { user }, { db }, info) => {
+      return db.models.employee.findOne({
+        where: {
+          user
+        }
+      });
     }
   },
 

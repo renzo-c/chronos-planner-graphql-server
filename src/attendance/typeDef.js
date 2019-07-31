@@ -19,6 +19,15 @@ const attendance = gql`
 
   extend type Mutation {
     deleteAttendance(scheduleId: ID!, employeeUser: String!): Attendance!
+    startAttendance(
+      scheduleId: ID!
+      employeeUser: String!
+      photo: String!
+      latitude: Float!
+      longitude: Float!
+      start: DateTime!
+      status: String!
+    ): Attendance!
   }
 `;
 

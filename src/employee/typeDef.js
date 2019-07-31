@@ -21,7 +21,8 @@ const employee = gql`
     extend type Query {
         employees: [Employee!]!,
         employee(user: String!): Employee,
-        employeeLogin(user: String, password: String): Employee
+        employeeLogin(user: String, password: String): Employee,
+        employeeSchedules(user: String): Employee
     }
 
     extend type Mutation {
