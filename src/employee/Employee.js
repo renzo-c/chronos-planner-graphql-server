@@ -47,12 +47,6 @@ const employeeModel = {
   password: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      len: {
-        args: [8, 20],
-        msg: "Password must contain at least 8 characters and not more than 20"
-      }
-    }
   },
   dni: {
     type: Sequelize.STRING,

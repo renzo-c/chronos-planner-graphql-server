@@ -1,4 +1,5 @@
 // import { GraphQLDateTime } from "graphql-iso-date";
+import bcrypt from 'bcrypt';
 
 export default {
   // DateTime: GraphQLDateTime, //pending point to check if it is used
@@ -18,10 +19,11 @@ export default {
       return db.models.employee.findByPk(user);
     },
     employeeLogin: (parent, { user, password }, { db }, info) => {
-      return db.models.employee.findOne({
-        where: {
-          user,
-          password
+      return db.models.employee.findOne({ where: { user } }).then(employee => {
+        if (employee && bcrypt.compareSync(password, employee.password)) {
+          return employee;
+        } else {
+          return null;
         }
       });
     },
@@ -35,12 +37,35 @@ export default {
   },
 
   Mutation: {
-    createEmployee: (parent, args, { db }, info) =>
-      db.models.employee.create(args),
-    updateEmployee: (parent, args, { db }, info) => {
+    createEmployee: async (parent, args, { db }, info) => {
+      let { password, ...rest } = { ...args };
+      const saltRounds = 10;
+      const hashedPassword = await new Promise((resolve, reject) => {
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(hash);
+        });
+      });
+      const newArgs = { ...rest, password: hashedPassword };
+      return db.models.employee.create(newArgs);
+    },
+    updateEmployee: async (parent, args, { db }, info) => {
+      let { password, ...rest } = { ...args };
+      const saltRounds = 10;
+      const hashedPassword = await new Promise((resolve, reject) => {
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(hash);
+        });
+      });
+      const newArgs = { ...rest, password: hashedPassword };
       return db.models.employee
-        .update(args, {
-          where: { user: args.user },
+        .update(newArgs, {
+          where: { user: newArgs.user },
           returning: true,
           plain: true
         })
