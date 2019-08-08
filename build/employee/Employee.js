@@ -3,19 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _sequelize = _interopRequireDefault(require("sequelize"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var employeeModel = {
+const employeeModel = {
   id: {
-    type: _sequelize["default"].UUID,
-    defaultValue: _sequelize["default"].UUIDV4
+    type: _sequelize.default.UUID,
+    defaultValue: _sequelize.default.UUIDV4
   },
   firstName: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: true,
     validate: {
       isAlpha: {
@@ -29,7 +29,7 @@ var employeeModel = {
     }
   },
   lastName: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: true,
     validate: {
       isAlpha: {
@@ -43,7 +43,7 @@ var employeeModel = {
     }
   },
   user: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false,
     validate: {
       isAlphanumeric: {
@@ -54,11 +54,11 @@ var employeeModel = {
     primaryKey: true
   },
   password: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false
   },
   dni: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false,
     validate: {
       is: {
@@ -68,7 +68,7 @@ var employeeModel = {
     }
   },
   address: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false,
     validate: {
       len: {
@@ -78,7 +78,7 @@ var employeeModel = {
     }
   },
   phone: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false,
     validate: {
       len: {
@@ -88,7 +88,7 @@ var employeeModel = {
     }
   },
   email: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: false,
     validate: {
       isEmail: {
@@ -98,7 +98,7 @@ var employeeModel = {
     }
   },
   status: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     defaultValue: 'disabled',
     allowNull: false,
     validate: {
@@ -109,11 +109,11 @@ var employeeModel = {
     }
   },
   updatedAt: {
-    type: _sequelize["default"].DATE
+    type: _sequelize.default.DATE
   },
   deletedAt: {
-    type: _sequelize["default"].DATE
+    type: _sequelize.default.DATE
   }
 };
 var _default = employeeModel;
-exports["default"] = _default;
+exports.default = _default;

@@ -6,27 +6,28 @@ var _db = _interopRequireDefault(require("./db"));
 
 var _graphql = require("./graphql");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 require("dotenv").config();
 
-var server = new _apolloServer.ApolloServer({
+const server = new _apolloServer.ApolloServer({
   typeDefs: _graphql.typeDefs,
   resolvers: _graphql.resolvers,
   context: {
-    db: _db["default"]
+    db: _db.default
   },
   playground: true,
   introspection: true
 }); // Synchronizing the models with the database
 
-_db["default"].sync({
+_db.default.sync({
   force: false
-}).then(function () {});
+}).then(() => {});
 
 server.listen({
   port: process.env.PORT || 4005
-}).then(function (_ref) {
-  var url = _ref.url;
-  console.log("\uD83D\uDE80 Server ready at ".concat(url));
+}).then(({
+  url
+}) => {
+  console.log(`🚀 Server ready at ${url}`);
 });

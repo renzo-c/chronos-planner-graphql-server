@@ -3,20 +3,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _sequelize = _interopRequireDefault(require("sequelize"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var scheduleModel = {
+const scheduleModel = {
   id: {
-    type: _sequelize["default"].UUID,
-    defaultValue: _sequelize["default"].UUIDV4,
+    type: _sequelize.default.UUID,
+    defaultValue: _sequelize.default.UUIDV4,
     primaryKey: true
   },
   tagName: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     allowNull: true,
     validate: {
       is: {
@@ -30,7 +30,7 @@ var scheduleModel = {
     }
   },
   start: {
-    type: _sequelize["default"].DATE,
+    type: _sequelize.default.DATE,
     allowNull: true,
     //change when tests were done
     validate: {
@@ -39,13 +39,13 @@ var scheduleModel = {
         msg: "Field must be filled with a date value"
       },
       isAfter: {
-        args: "".concat(new Date()),
-        msg: "Start must be a future date | ".concat(new Date())
+        args: `${new Date()}`,
+        msg: `Start must be a future date | ${new Date()}`
       }
     }
   },
   end: {
-    type: _sequelize["default"].DATE,
+    type: _sequelize.default.DATE,
     allowNull: true,
     validate: {
       isDate: {
@@ -53,13 +53,13 @@ var scheduleModel = {
         msg: "Field must be filled with a date value"
       },
       isAfter: {
-        args: "".concat(new Date()),
-        msg: "Start must be a future date | ".concat(new Date())
+        args: `${new Date()}`,
+        msg: `Start must be a future date | ${new Date()}`
       }
     }
   },
   status: {
-    type: _sequelize["default"].STRING,
+    type: _sequelize.default.STRING,
     defaultValue: 'disabled',
     allowNull: false,
     validate: {
@@ -70,8 +70,8 @@ var scheduleModel = {
     }
   },
   deletedAt: {
-    type: _sequelize["default"].DATE
+    type: _sequelize.default.DATE
   }
 };
 var _default = scheduleModel;
-exports["default"] = _default;
+exports.default = _default;

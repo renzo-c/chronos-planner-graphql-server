@@ -3,22 +3,60 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _apolloServer = require("apollo-server");
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n    type Employee {\n        id: ID,\n        firstName: String!,\n        lastName: String!,\n        user: String!,\n        password: String!,\n        dni: String!,\n        address: String!,\n        phone: String!,\n        email: String!,\n        status: String\n        schedules: [Schedule],\n        createdAt: DateTime!,\n        deletedAt: DateTime\n    }\n\n    extend type Query {\n        employees: [Employee!]!,\n        employee(user: String!): Employee,\n        employeeLogin(user: String, password: String): Employee,\n        employeeSchedules(user: String): Employee\n    }\n\n    extend type Mutation {\n        createEmployee(\n            firstName: String!,\n            lastName: String!,\n            user: String!,\n            password: String!,\n            dni: String!,\n            address: String!,\n            phone: String!,\n            email: String!,\n            status: String\n        ): Employee!\n        updateEmployee(\n            firstName: String,\n            lastName: String,\n            user: String!,\n            password: String,\n            dni: String,\n            address: String,\n            phone: String,\n            email: String,\n            status: String\n        ): Employee!\n        deleteEmployee( user: String! ): Employee\n    }\n"]);
+const employee = _apolloServer.gql`
 
-  _templateObject = function _templateObject() {
-    return data;
-  };
+    type Employee {
+        id: ID,
+        firstName: String!,
+        lastName: String!,
+        user: String!,
+        password: String!,
+        dni: String!,
+        address: String!,
+        phone: String!,
+        email: String!,
+        status: String
+        schedules: [Schedule],
+        createdAt: DateTime!,
+        deletedAt: DateTime
+    }
 
-  return data;
-}
+    extend type Query {
+        employees: [Employee!]!,
+        employee(user: String!): Employee,
+        employeeLogin(user: String, password: String): Employee,
+        employeeSchedules(user: String): Employee
+    }
 
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var employee = (0, _apolloServer.gql)(_templateObject());
+    extend type Mutation {
+        createEmployee(
+            firstName: String!,
+            lastName: String!,
+            user: String!,
+            password: String!,
+            dni: String!,
+            address: String!,
+            phone: String!,
+            email: String!,
+            status: String
+        ): Employee!
+        updateEmployee(
+            firstName: String,
+            lastName: String,
+            user: String!,
+            password: String,
+            dni: String,
+            address: String,
+            phone: String,
+            email: String,
+            status: String
+        ): Employee!
+        deleteEmployee( user: String! ): Employee
+    }
+`;
 var _default = employee;
-exports["default"] = _default;
+exports.default = _default;
