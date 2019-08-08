@@ -3,22 +3,39 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _apolloServer = require("apollo-server");
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  type Attendance {\n    id: ID!\n    photo: String\n    latitude: Float\n    longitude: Float\n    start: DateTime\n    employee: Employee\n    schedule: Schedule\n    status: String\n  }\n\n  extend type Query {\n    attendances: [Attendance]!\n    attendance(scheduleId: ID!, employeeUser: String!): Attendance!\n  }\n\n  extend type Mutation {\n    deleteAttendance(scheduleId: ID!, employeeUser: String!): Attendance!\n    startAttendance(\n      scheduleId: ID!\n      employeeUser: String!\n      photo: String!\n      latitude: Float!\n      longitude: Float!\n      start: DateTime!\n      status: String!\n    ): Attendance!\n  }\n"]);
+const attendance = _apolloServer.gql`
+  type Attendance {
+    id: ID!
+    photo: String
+    latitude: Float
+    longitude: Float
+    start: DateTime
+    employee: Employee
+    schedule: Schedule
+    status: String
+  }
 
-  _templateObject = function _templateObject() {
-    return data;
-  };
+  extend type Query {
+    attendances: [Attendance]!
+    attendance(scheduleId: ID!, employeeUser: String!): Attendance!
+  }
 
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var attendance = (0, _apolloServer.gql)(_templateObject());
+  extend type Mutation {
+    deleteAttendance(scheduleId: ID!, employeeUser: String!): Attendance!
+    startAttendance(
+      scheduleId: ID!
+      employeeUser: String!
+      photo: String!
+      latitude: Float!
+      longitude: Float!
+      start: DateTime!
+      status: String!
+    ): Attendance!
+  }
+`;
 var _default = attendance;
-exports["default"] = _default;
+exports.default = _default;
