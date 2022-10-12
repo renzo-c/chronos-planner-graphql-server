@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/renzo-c/chronos-planner-graphql-server#readme",
   "dependencies": {
-    "apollo-server": "^2.6.4",
+    "apollo-server": "^2.25.4",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
